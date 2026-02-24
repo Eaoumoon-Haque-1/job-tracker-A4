@@ -21,3 +21,6 @@ Answers:
 4. Instead of adding event listener to many child elements,we add one listener to the parent and use bubbling. 
     it's useful because we dont need to add listeners on every elemts and later catch it one by one.
 
+5. preventDefault() Stops the browser’s default behavior for an element.
+
+    stopPropagation() Stops the event from bubbling up
