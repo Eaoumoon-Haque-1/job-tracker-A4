@@ -24,6 +24,8 @@ function calculateCount(){
     interview.innerText = interviewList.length;
     rejected.innerText = rejectedList.length;
     // if(currentPosition === 'all'){
+    
+    allCount.innerText = all.children.length;
     availableCount.innerText = all.children.length;
     if(currentPosition === 'interview-button-id'){
         currentCount.innerText =interviewList.length;
@@ -243,3 +245,14 @@ function renderRejectedList(){
         filteredSection.appendChild(div);
     }
 }
+
+// delete functionality
+mainContainer.addEventListener('click', function(event){
+
+    if(event.target.closest('.delete-btn')){
+        const card = event.target.closest('.bg-white'); 
+        card.remove();
+        calculateCount();
+    }
+
+});
