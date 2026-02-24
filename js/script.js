@@ -89,10 +89,13 @@ mainContainer.addEventListener('click', function(event){
         const positionName = parent.querySelector('.position-name').innerText;
         const jobType = parent.querySelector('.job-type').innerText;
         const jobDescription = parent.querySelector('.job-description').innerText;
-        const currentStatus = parent.querySelector('.current-status');
-        console.log(currentStatus);
-        currentStatus.classList.remove('bg-[#eef4ffFF]','max-w-[113px]');
-        currentStatus.innerHTML = `<p class="rounded-sm py-1 px-3 border border-[#10b981FF] text-[#10b981FF] mr-2 max-w-[113px]">INTERVIEWD</p>`;
+        // const status = parent.querySelector('.current-status');
+        // if(status){
+        //     let currentStatus = status.innerText;
+        // }
+        // // console.log(currentStatus);
+        // currentStatus.classList.remove('bg-[#eef4ffFF]','max-w-[113px]');
+        // currentStatus.innerHTML = `<p class="rounded-sm py-1 px-3 border border-[#10b981FF] text-[#10b981FF] mr-2 max-w-[113px]">INTERVIEWD</p>`;
         // currentStatus.innerText= 'INTERVIEWD',
         // console.log(currentStatus);
         cardInfo = {
@@ -112,15 +115,39 @@ mainContainer.addEventListener('click', function(event){
                 rejectedList.splice(index, 1);
             }
         }
+        // filtering out the card from rejected list if exist
         rejectedList = rejectedList.filter(job => (job.companyName !== cardInfo.companyName));
         if(currentPosition == 'rejected-button-id'){
                renderRejectedList();
-               // availableCount.innerText =interviewList.length;
         }
-        calculateCount();
-        // availableCount.innerText =interviewList.length;
+        
+        // Updating original ALL section card
+        const allCards = all.querySelectorAll('.bg-white');
 
+        allCards.forEach(card => {
+            const companyElement = card.querySelector('.company-name');
+
+            if (companyElement) {
+                company = companyElement.innerText;
+            }
+            const companyPosition = card.querySelector('.position-name');
+            if (companyPosition) {
+                position = companyPosition.innerText;
+            }
+
+            if(company === companyName && position === positionName){
+                const status = card.querySelector('.current-status');
+                status.classList.remove('bg-[#eef4ffFF]','max-w-[113px]');
+                status.innerHTML = `
+                    <p class="rounded-sm py-1 px-3 border border-[#10b981FF] text-[#10b981FF] mr-2 max-w-[113px]">
+                        INTERVIEWD
+                    </p>
+                `;
+            }
+});
+        calculateCount();
     }
+
     else if(event.target.classList.contains('rejected-btn')){
         const parent = event.target.parentNode.parentNode;
         const companyName = parent.querySelector('.company-name').innerText;
@@ -153,6 +180,31 @@ mainContainer.addEventListener('click', function(event){
         if(currentPosition == 'interview-button-id'){
             renderInterviewList();
         }
+        // Update original ALL section card
+        const allCards = all.querySelectorAll('.bg-white');
+
+        allCards.forEach(card => {
+            // const company = card.querySelector('.company-name')?.innerText;
+            // shortcut this is called optional chaining, it checks if the element exists before trying to access its innerText
+            const companyElement = card.querySelector('.company-name');
+
+            if (companyElement) {
+                company = companyElement.innerText;
+            }
+            const companyPosition = card.querySelector('.position-name');
+            if (companyPosition) {
+                position = companyPosition.innerText;
+            }
+
+            if(company === companyName && position === positionName){
+                const status = card.querySelector('.current-status');
+                status.innerHTML = `
+                    <p class="rounded-sm py-1 px-3 border border-[#ef4444FF] text-[#ef4444FF] mr-2 max-w-[113px]">
+                        REJECTED
+                    </p>
+                `;
+            }
+        });
         calculateCount();
         
     }
