@@ -185,9 +185,9 @@ function renderInterviewList(){
                         <p class="current-status text-[14px] bg-[#eef4ffFF] py-3 px-2 rounded-sm font-medium max-w-[113px] text-center"">${job.currentStatus}</p>
                         <p class="job-description text-[#323b49FF]">${job.jobDescription}</p>
                     </div>
-                    <div>
-                        <button  class="interview-btn rounded-sm py-1 px-3 border border-[#10b981FF] text-[#10b981FF] mr-2">INTERVIEW</button>
-                        <button  class="rejected-btn rounded-sm py-1 px-3 border border-[#ef4444FF] text-[#ef4444FF]">REJECTED</button>
+                    <div class="flex flex-col space-y-2 md:flex-row md:space-x-2 md:space-y-0">
+                        <button  class="interview-btn rounded-sm py-1 px-3 border border-[#10b981FF] text-[#10b981FF] w-[113px]">INTERVIEW</button>
+                        <button  class="rejected-btn rounded-sm py-1 px-3 border border-[#ef4444FF] text-[#ef4444FF] w-[113px]">REJECTED</button>
                     </div>
                 </div>
                 <!-- part 2 delete -->
@@ -233,9 +233,9 @@ function renderRejectedList(){
                         <p class="rejected-btn rounded-sm py-1 px-3 border border-[#ef4444FF] text-[#ef4444FF] max-w-[113px]">${job.currentStatus}</p>
                         <p class="job-description text-[#323b49FF]">${job.jobDescription}</p>
                     </div>
-                    <div>
-                        <button  class="interview-btn rounded-sm py-1 px-3 border border-[#10b981FF] text-[#10b981FF] mr-2">INTERVIEW</button>
-                        <button  class="rejected-btn rounded-sm py-1 px-3 border border-[#ef4444FF] text-[#ef4444FF]">REJECTED</button>
+                    <div class="flex flex-col space-y-2 md:flex-row md:space-x-2 md:space-y-0">
+                        <button  class="interview-btn rounded-sm py-1 px-3 border border-[#10b981FF] text-[#10b981FF] w-[113px]">INTERVIEW</button>
+                        <button  class="rejected-btn rounded-sm py-1 px-3 border border-[#ef4444FF] text-[#ef4444FF] w-[113px]">REJECTED</button>
                     </div>
                 </div>
                 <!-- part 2 delete -->
